@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vgs-Netlify integration</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="stepper.css" />
+</head>
+<body>
+  <div class="row payloads-row">
+    <div class="col">
+        <img class="checkr-payload" width="40" src="./vgs-logo.png" 
+        data-container="body" data-toggle="popover" data-placement="bottom"       />
+    </div>
+    <div class="col">
+      <img class="stripe-payload" width="40" src="./vgs-logo.png" />
+    </div>
+  </div>
+
+  <div class="md-stepper-horizontal orange">
+    <div class="md-step step-header-1 active">
+      <div class="md-step-circle"><span>1</span></div>
+      <div class="md-step-title">User Data</div>
+      <div class="md-step-bar-left"></div>
+      <div class="md-step-bar-right"></div>
+    </div>
+    <div class="md-step step-header-2">
+      <div class="md-step-circle"><span>2</span></div>
+      <div class="md-step-title">Checkr</div>
+      <div class="md-step-optional"></div>
+      <div class="md-step-bar-left"></div>
+      <div class="md-step-bar-right"></div>
+    </div>
+    <div class="md-step step-header-3">
+      <div class="md-step-circle"><span>3</span></div>
+      <div class="md-step-title">Review & payment</div>
+      <div class="md-step-bar-left"></div>
+      <div class="md-step-bar-right"></div>
+    </div>
+  </div>
+      
+  <div>
+    <form class="step1" name="vgs" method="post" netlify-honeypot="b" autocomplete="off" netlify secure  style="width: 300px;margin: 0 auto;">
+      <input type="hidden" name="submit_id" />
+
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="first_name">First Name</label>
+            <input type="text" class="form-control" name="first_name" id="first_name" value="John" />
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="last_name">Last Name</label>
+            <input type="text" class="form-control" name="last_name" id="last_name" value="Doe" />
+          </div>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="email_address">Email</label>
+            <input type="text" class="form-control" name="email_address" id="email-address" data-secure-field />
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="ssn">SSN</label>
+            <input type="text" class="form-control" name="ssn" id="ssn" data-secure-field />
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="birthdate">Date of birth</label>
+        <input type="text" class="form-control" name="birthdate" id="birthdate" value="1988-06-22" />
+      </div>
+  
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="driver_license">Driver Licence</label>
+            <input type="text" class="form-control" name="driver_license" id="driver_license" data-secure-field />
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="driver_license_state">Licence State</label>
+            <input type="text" class="form-control" name="driver_license_state" id="driver_license_state" value="CA" />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" class="form-control" name="address" id="address" value="Random street 33"/>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="card">Card</label>
+            <input type="text" class="form-control" name="card" id="card" data-secure-field />
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="cvv">cvv</label>
+            <input type="text" class="form-control" name="cvv" id="cvv" data-secure-field />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="month">Month</label>
+            <input type="text" class="form-control" name="month" id="month" value="10"/>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="year">Year</label>
+            <input type="text" class="form-control" name="year" id="year" value="2020"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-top: 20px;margin-left: 50px;">
+        <button class="btn btn-primary" type="submit" id="submit">Submit</button>
+      </div>
+    </form>
+
+
+    <div class="step2" style="width: 300px;margin: 0 auto;"></div>
+    <div class="step3" style="width: 300px;margin: 0 auto;"></div>
+    <div class="step4" style="width: 600px;margin: 0 auto;"></div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const interval = setInterval(() => {
+      try {
+        initForm();
+        clearInterval(interval);
+        console.log('init & clear');
+      } catch(e) {
+        console.log('noooo1111');
+      }
+    }, 100);
+
+    const submitId = Math.random().toString(36).substring(2);
+    document.querySelector('[name=submit_id]').value = submitId;
+
+    const initForm = () => {
+      vgs.onSubmitForm = function(secureForm, form) {
+        var formData = new FormData();
+        formData.set('form-name', form.getAttribute('name'));
+        const payload = vgs.getPayload(form);
+      
+        secureForm.submit('/', {
+          serialization: 'formData',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          data: vgs.getPayload(form),
+        }, function(status, data) {
+          checkrDemoSubmit(submitId);
+        });
+      }
+    }
+
+    async function checkrDemoSubmit(submitId) {
+      gotoStep2(submitId);
+    }
+
+    function getReportData(submitId) {
+      const url = '/.netlify/functions/checkr?submitId='+ submitId;
+
+      return fetch(url).then(function(response) {
+        return response.json();
+      });
+    }
+
+    function getReport(reportId) {
+      const url = '/.netlify/functions/checkr-report?reportId='+ reportId;
+
+      return fetch(url).then(function(response) {
+        return response.json();
+      })
+    }
+
+    function charge(submitId) {
+      const url = '/.netlify/functions/stripe?submitId='+ submitId;
+
+      return fetch(url).then(function(response) {
+        return response.json();
+      })
+    }
+
+    async function gotoStep2(submitId) {
+      $('.step1').hide();
+      $('.step2').html(`Checking... submit id is ${submitId}`);
+
+      const reportData = await getReportData(submitId);
+      const reportId = reportData.reportId;
+      const submitData = reportData.submitData;
+      console.log('reportData', submitData, reportId);
+      showCheckrData(submitData);
+      const report = await getReport(reportId);
+      console.log('report', report);
+
+      completeStep(2);
+
+      gotoStep3(report, submitId)
+    }
+
+    function gotoStep3(report, submitId) {
+      $('.step2').hide();
+      $('.step3').html(`
+        <h4>Status: ${report.status}</h4>
+        <div>document_ids: ${report.document_ids.length}</div>
+        <div>municipal_criminal_search_ids: ${report.municipal_criminal_search_ids.length}</div>
+        <div>state_criminal_search_ids: ${report.state_criminal_search_ids.length}</div>
+        <div>county_criminal_search_ids: ${report.county_criminal_search_ids.length}</div>
+
+        <button class="btn btn-primary" onclick="charge100('${submitId}')">Charge 100$</button>
+      `);
+    }
+
+    async function charge100(submitId) {
+      console.log('charge100');
+      const resp = await charge(submitId);
+      const chargeResponse = resp.chargeResponse;
+      const userData = resp.userData;
+      completeStep(3);
+      console.log('resp', chargeResponse, userData);
+      gotoStep4(submitId, chargeResponse)
+    }
+
+    function gotoStep4(submitId, chargeResponse) {
+      $('.step3').hide();
+      $('.step4').html(`
+        <h3>Payment successfull!</h3>
+        <h4>Stripe transaction id: <strong>${chargeResponse.id}</strong></h4>
+        <div>View your <a href="${chargeResponse.receipt_url}">receipt</a></div>
+      `);
+    }
+
+    function showCheckrData(payload) {
+      $('.checkr-payload').show().popover({
+        content: `
+          <pre>${JSON.stringify(payload, null, 4)}</pre>
+        `,
+        html: true,
+      })
+    }
+
+    function completeStep(step) {
+      $(`.step-header-${step}`).addClass('active')
+    }
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+body {
+  text-align: center;
+  margin-top: 100px; 
+  font-size: 18px;
+}
+
+input[type="text"] {
+  height: 27px;
+  padding: 1px;
+}
+
+button {
+  width: 200px;
+  height: 30px;
+  font-size: 18px;
+  border-radius: 2px;
+}
+
+[data-secure-field] iframe {
+  border: 0 none transparent;
+  height: inherit;
+  vertical-align: middle;
+  width: inherit;
+}
+
+span[data-secure-field] {
+  background-color: #fff;
+  border: 1px solid #dfdfdf;
+  display: inline-block;
+  height: 27px;
+  padding: 1px;
+  position: relative;
+  width: 128px;
+}
+
+form span {
+  display: inline-block;
+  height: 20px;
+  width: 200px;
+  margin-bottom: 15px;
+}
+span iframe {
+  height: 100%;
+  width: 100%;
+}
+form {
+  text-align: left;
+}
+
+.checkr-payload, .stripe-payload {
+  cursor: pointer;
+  display: none;
+}
+
+.popover {
+  max-width: 500px;
+}
+
+.payloads-row {
+  width: 1000px;
+  margin: 0 auto;
+}
