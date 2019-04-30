@@ -1,0 +1,11 @@
+{
+  "name": "netlify-addon-demo",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "request-promise-native": "^1.0.7",
+    "stripe": "^6.28.0"
+  }
+}
