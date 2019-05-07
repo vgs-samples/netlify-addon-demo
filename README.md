@@ -4,5 +4,6 @@
 You need to provide a couple of secrets as env variables, to make it work
 - `NETLIFY_TOKEN=? VGS_USER=? VGS_PASSWORD=? CHECKR_KEY=? VGS_TENANT_ID=? STRIPE_SECRET=? npm run start-fn`
 
-![Test image](https://netlify-vgs-demo.netlify.com/vgs-logo.png)
+
+![addon diagram](https://netlify-vgs-demo.netlify.com/Netlify-VGS-addon.svg)
 
