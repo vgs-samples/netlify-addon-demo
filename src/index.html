@@ -29,110 +29,88 @@
     </div>
     <div class="md-step step-header-2">
       <div class="md-step-circle"><span>2</span></div>
-      <div class="md-step-title">Checkr</div>
+      <div class="md-step-title">Background Check via Checkr</div>
       <div class="md-step-optional"></div>
       <div class="md-step-bar-left"></div>
       <div class="md-step-bar-right"></div>
     </div>
     <div class="md-step step-header-3">
       <div class="md-step-circle"><span>3</span></div>
-      <div class="md-step-title">Review & payment</div>
+      <div class="md-step-title">Review & Payment</div>
       <div class="md-step-bar-left"></div>
       <div class="md-step-bar-right"></div>
     </div>
   </div>
       
-  <div>
-    <form class="step1" name="vgs" method="post" netlify-honeypot="b" autocomplete="off" netlify secure  style="width: 300px;margin: 0 auto;">
+  <div class="container mb-5">
+    <form class="step1" name="vgs" method="post" netlify-honeypot="b" autocomplete="off" netlify secure  style="width: 430px;margin: 0 auto;">
       <input type="hidden" name="submit_id" />
 
-      <div class="row">
-        <div class="col">
-          <div class="form-group">
-            <label for="first_name">First Name</label>
-            <input type="text" class="form-control" name="first_name" id="first_name" value="John" />
-          </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="first_name">First Name</label>
+          <input type="text" class="form-control" name="first_name" id="first_name" value="John" />
         </div>
-        <div class="col">
-          <div class="form-group">
-            <label for="last_name">Last Name</label>
-            <input type="text" class="form-control" name="last_name" id="last_name" value="Doe" />
-          </div>
+        <div class="form-group col-md-6">
+          <label for="last_name">Last Name</label>
+          <input type="text" class="form-control" name="last_name" id="last_name" value="Doe" />
         </div>
       </div>
   
-      <div class="row">
-        <div class="col">
-          <div class="form-group">
-            <label for="email_address">Email</label>
-            <input type="text" class="form-control" name="email_address" id="email-address" data-secure-field />
-          </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="email_address">Email</label>
+          <input type="text" class="form-control" name="email_address" id="email-address" data-secure-field />
         </div>
-        <div class="col">
-          <div class="form-group">
-            <label for="ssn">SSN</label>
-            <input type="text" class="form-control" name="ssn" id="ssn" data-secure-field />
-          </div>
+        <div class="form-group col-md-6">
+          <label for="ssn">SSN</label>
+          <input type="text" class="form-control" name="ssn" id="ssn" data-secure-field />
         </div>
       </div>
       
-      <div class="form-group">
-        <label for="birthdate">Date of birth</label>
-        <input type="text" class="form-control" name="birthdate" id="birthdate" value="1988-06-22" />
-      </div>
-  
-      <div class="row">
-        <div class="col">
-          <div class="form-group">
-            <label for="driver_license">Driver Licence</label>
-            <input type="text" class="form-control" name="driver_license" id="driver_license" data-secure-field />
-          </div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="birthdate">Date of Birth</label>
+            <input type="text" class="form-control" name="birthdate" id="birthdate" value="1988-06-22" />
         </div>
-        <div class="col">
-          <div class="form-group">
-            <label for="driver_license_state">Licence State</label>
-            <input type="text" class="form-control" name="driver_license_state" id="driver_license_state" value="CA" />
-          </div>
+        <div class="form-group col-md-4">
+          <label for="driver_license">Driver Licence</label>
+          <input type="text" class="form-control" name="driver_license" id="driver_license" data-secure-field />
+        </div>
+        <div class="form-group col-md-4">
+          <label for="driver_license_state">Licence State</label>
+          <input type="text" class="form-control" name="driver_license_state" id="driver_license_state" value="CA" />
         </div>
       </div>
 
-      <div class="form-group">
-        <label for="address">Address</label>
-        <input type="text" class="form-control" name="address" id="address" value="Random street 33"/>
-      </div>
-
-      <div class="row">
-        <div class="col">
-          <div class="form-group">
-            <label for="card">Card</label>
-            <input type="text" class="form-control" name="card" id="card" data-secure-field />
-          </div>
-        </div>
-        <div class="col">
-          <div class="form-group">
-            <label for="cvv">cvv</label>
-            <input type="text" class="form-control" name="cvv" id="cvv" data-secure-field />
-          </div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+            <label for="address">Address</label>
+            <input type="text" class="form-control" name="address" id="address" value="Random street 33"/>
         </div>
       </div>
 
-      <div class="row">
-        <div class="col">
-          <div class="form-group">
-            <label for="month">Month</label>
-            <input type="text" class="form-control" name="month" id="month" value="10"/>
-          </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="card">Card</label>
+          <input type="text" class="form-control" name="card" id="card" data-secure-field />
         </div>
-        <div class="col">
-          <div class="form-group">
-            <label for="year">Year</label>
-            <input type="text" class="form-control" name="year" id="year" value="2020"/>
-          </div>
+        <div class="form-group col-md-2">
+          <label for="cvv">CVV</label>
+          <input type="text" class="form-control" name="cvv" id="cvv" data-secure-field />
+        </div>
+        <div class="form-group col-md-2">
+          <label for="month">Month</label>
+          <input type="text" class="form-control" name="month" id="month" value="10"/>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="year">Year</label>
+          <input type="text" class="form-control" name="year" id="year" value="2020"/>
         </div>
       </div>
 
-      <div class="form-group" style="margin-top: 20px;margin-left: 50px;">
-        <button class="btn btn-primary" type="submit" id="submit">Submit</button>
+      <div class="form-group text-center mt-3">
+        <button class="btn btn-primary btn-block" type="submit" id="submit">Submit</button>
       </div>
     </form>
 
@@ -230,7 +208,7 @@
         <div>state_criminal_search_ids: ${report.state_criminal_search_ids.length}</div>
         <div>county_criminal_search_ids: ${report.county_criminal_search_ids.length}</div>
 
-        <button class="btn btn-primary" onclick="charge100('${submitId}')">Charge 100$</button>
+        <button class="btn btn-primary" onclick="charge100('${submitId}')">Charge $1</button>
       `);
     }
 
@@ -247,7 +225,7 @@
     function gotoStep4(submitId, chargeResponse) {
       $('.step3').hide();
       $('.step4').html(`
-        <h3>Payment successfull!</h3>
+        <h3>Payment successful!</h3>
         <h4>Stripe transaction id: <strong>${chargeResponse.id}</strong></h4>
         <div>View your <a href="${chargeResponse.receipt_url}">receipt</a></div>
       `);

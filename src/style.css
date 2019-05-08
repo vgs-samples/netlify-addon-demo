@@ -5,13 +5,10 @@ body {
 }
 
 input[type="text"] {
-  height: 27px;
-  padding: 1px;
+  /* height: 27px; */
 }
 
 button {
-  width: 200px;
-  height: 30px;
   font-size: 18px;
   border-radius: 2px;
 }
@@ -27,10 +24,9 @@ span[data-secure-field] {
   background-color: #fff;
   border: 1px solid #dfdfdf;
   display: inline-block;
-  height: 27px;
-  padding: 1px;
+  /* height: 27px; */
+  padding: 1px .75rem;
   position: relative;
-  width: 128px;
 }
 
 form span {
