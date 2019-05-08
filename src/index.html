@@ -226,7 +226,10 @@
       `;
 
       $('.step3').html(`
-        ${reportHtml || 'Couldn\'t retrieve info about person' }
+        ${reportHtml || `
+          Couldn\'t connect to Checkr API.
+          Check your access keys or skip this step.
+        `}
         <button class="btn btn-primary" onclick="charge100('${submitId}')">Charge $1</button>
       `);
     }
