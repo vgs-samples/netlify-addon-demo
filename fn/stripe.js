@@ -49,7 +49,7 @@ async function charge(cardToken, amount) {
   return JSON.parse(response);
 }
 
-exports.handler = async function(event, context, callback) {
+exports.handler = async function(event, context) {
   const submitId = event.queryStringParameters.submitId;
   console.log('submitId', submitId);
   
@@ -69,13 +69,13 @@ exports.handler = async function(event, context, callback) {
     
     console.log('chargeResponse', chargeResponse);
     
-    callback(null, {
+    return {
       statusCode: 200,
       body: JSON.stringify({
         chargeResponse,
         userData,
       }),
-    });
+    };
   } catch (e) {
     console.log('err');
     if(e.error) {
@@ -85,9 +85,9 @@ exports.handler = async function(event, context, callback) {
     }
     
     
-    callback(null, {
+    return {
       statusCode: 200,
       body: 'error',
-    });
+    };
   }
 }

@@ -54,11 +54,18 @@ async function getSubmitById(submitId) {
 }
 
 
-exports.handler = async function(event, context, callback) {
+exports.handler = async function(event, context) {
   const submitId = event.queryStringParameters.submitId;
   console.log('submitId', submitId);
   console.log('env', process.env);
   
+  if (!checkrKey) {
+    return {
+      statusCode: 200,
+      body: '{"error":"no-key"}'
+    }
+  }
+
   try {
     const userData = await getSubmitById(submitId);
     console.log('userData', userData);
@@ -74,23 +81,23 @@ exports.handler = async function(event, context, callback) {
 
     const reportId = await gerReportId(candidate.id);
 
-    callback(null, {
+    return {
       statusCode: 200,
       body: JSON.stringify({
         reportId,
         submitData: userData,
       }),
-    });
+    };
   } catch (e) {
     if(e.error) {
       console.log(e.error);
     } else {
       console.log(e);
     }
-    
-    callback(null, {
+
+    return {
       statusCode: 200,
-      body: 'error',
-    });
+      body: 'error'
+    };
   }
 }

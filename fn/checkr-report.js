@@ -1,4 +1,3 @@
-// import stripeLib from "stripe";
 import request from 'request-promise-native';
 
 async function getReport(reportId) {
@@ -16,9 +15,17 @@ async function getReport(reportId) {
   return JSON.parse(response);
 }
 
-exports.handler = async function(event, context, callback) {
+exports.handler = async function(event, context) {
   const reportId = event.queryStringParameters.reportId;
   console.log('reportId', reportId);
+
+    
+  if (!checkrKey) {
+    return {
+      statusCode: 200,
+      body: '{"error":"no-key"}'
+    }
+  }
 
   try {
     let report;
@@ -34,10 +41,10 @@ exports.handler = async function(event, context, callback) {
     console.log('report done');
     console.log(report);
     
-    callback(null, {
+    return {
       statusCode: 200,
       body: JSON.stringify(report),
-    });
+    };
   } catch (e) {
     if(e.error) {
       console.log(e.error);
@@ -45,9 +52,9 @@ exports.handler = async function(event, context, callback) {
       console.log(e);
     }
     
-    callback(null, {
+    return {
       statusCode: 200,
       body: 'error',
-    });
+    };
   }
 }

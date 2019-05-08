@@ -43,7 +43,7 @@
   </div>
       
   <div class="container mb-5">
-    <form class="step1" name="vgs" method="post" netlify-honeypot="b" autocomplete="off" netlify secure  style="width: 430px;margin: 0 auto;">
+    <form class="step1" name="vgs" method="post" netlify-honeypot="b" autocomplete="off" netlify secure style="width: 430px;margin: 0 auto;">
       <input type="hidden" name="submit_id" />
 
       <div class="form-row">
@@ -135,8 +135,17 @@
 
     const submitId = Math.random().toString(36).substring(2);
     document.querySelector('[name=submit_id]').value = submitId;
+    // function onFormSubmit(e) {
+    //   console.log(e);
+      
+    //   e.preventDefault();
+    //   e.stopPropagation();
 
+    //   console.log('function onFormSubmit();');
+    //   checkrDemoSubmit(submitId);
+    // }
     const initForm = () => {
+      
       vgs.onSubmitForm = function(secureForm, form) {
         var formData = new FormData();
         formData.set('form-name', form.getAttribute('name'));
@@ -187,27 +196,37 @@
       $('.step2').html(`Checking... submit id is ${submitId}`);
 
       const reportData = await getReportData(submitId);
-      const reportId = reportData.reportId;
-      const submitData = reportData.submitData;
-      console.log('reportData', submitData, reportId);
-      showCheckrData(submitData);
-      const report = await getReport(reportId);
-      console.log('report', report);
+      console.log('reportData', reportData);
 
       completeStep(2);
 
-      gotoStep3(report, submitId)
+      if (reportData.error) {
+        gotoStep3(null, submitId);
+      } else {
+        const reportId = reportData.reportId;
+        const submitData = reportData.submitData;
+        console.log('reportData', submitData, reportId);
+        showCheckrData(submitData);
+        const report = await getReport(reportId);
+        console.log('report', report);
+
+        gotoStep3(report, submitId);
+      }
     }
 
     function gotoStep3(report, submitId) {
       $('.step2').hide();
-      $('.step3').html(`
+
+      const reportHtml = report && `
         <h4>Status: ${report.status}</h4>
         <div>document_ids: ${report.document_ids.length}</div>
         <div>municipal_criminal_search_ids: ${report.municipal_criminal_search_ids.length}</div>
         <div>state_criminal_search_ids: ${report.state_criminal_search_ids.length}</div>
         <div>county_criminal_search_ids: ${report.county_criminal_search_ids.length}</div>
+      `;
 
+      $('.step3').html(`
+        ${reportHtml || 'Couldn\'t retrieve info about person' }
         <button class="btn btn-primary" onclick="charge100('${submitId}')">Charge $1</button>
       `);
     }
