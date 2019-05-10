@@ -1,4 +1,4 @@
-import request from 'request-promise-native';
+const request = require('request-promise-native')
 
 const vgsUser = process.env.VGS_USER;
 const vgsPass = process.env.VGS_PASSWORD;
@@ -42,11 +42,11 @@ async function gerReportId(candidateId) {
 
 async function getSubmitById(submitId) {
   console.log('getSubmitById', Buffer.from(`${checkrKey}:`).toString('base64') );
-  
+
   const url = `http://api.netlify.com/api/v1/submissions?access_token=${netlifyToken}`;
   const response = await request(url);
   const data = JSON.parse(response);
-    
+
   const submit = data.find(r => r.data.submit_id === submitId);
   console.log('submit', submit.data);
 
@@ -58,7 +58,7 @@ exports.handler = async function(event, context) {
   const submitId = event.queryStringParameters.submitId;
   console.log('submitId', submitId);
   console.log('env', process.env);
-  
+
   if (!checkrKey) {
     return {
       statusCode: 200,
@@ -69,10 +69,10 @@ exports.handler = async function(event, context) {
   try {
     const userData = await getSubmitById(submitId);
     console.log('userData', userData);
-    
+
     const payload = `first_name=${userData.first_name}&last_name=${userData.last_name}&email=${userData.email_address}&ssn=${userData.ssn}&driver_license_number=${userData.driver_license}&driver_license_state=${userData.driver_license_state}&zipcode=90401&dob=${userData.birthdate}&no_middle_name=true&geo_ids[]=486bfc16a8fd6f33519b89af`
     console.log('payload', payload);
-    
+
     let responseCheckr = await sendDataWithProxy(
       `https://api.checkr.com/v1/candidates`, fwUrl, payload, 'application/x-www-form-urlencoded'
     );

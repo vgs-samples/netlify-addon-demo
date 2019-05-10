@@ -1,9 +1,9 @@
-import request from 'request-promise-native';
+const request = require('request-promise-native')
 
 async function getReport(reportId) {
   const url = `https://api.checkr.com/v1/reports/${reportId}`;
   console.log('reportIdUrl', url);
-  
+
   const response = await request({
     method: 'GET',
     url: url,
@@ -19,7 +19,7 @@ exports.handler = async function(event, context) {
   const reportId = event.queryStringParameters.reportId;
   console.log('reportId', reportId);
 
-    
+
   if (!checkrKey) {
     return {
       statusCode: 200,
@@ -40,7 +40,7 @@ exports.handler = async function(event, context) {
 
     console.log('report done');
     console.log(report);
-    
+
     return {
       statusCode: 200,
       body: JSON.stringify(report),
@@ -51,7 +51,7 @@ exports.handler = async function(event, context) {
     } else {
       console.log(e);
     }
-    
+
     return {
       statusCode: 200,
       body: 'error',

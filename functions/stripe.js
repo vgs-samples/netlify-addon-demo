@@ -1,4 +1,4 @@
-import request from 'request-promise-native';
+const request = require('request-promise-native')
 
 const vgsUser = process.env.VGS_USER;
 const vgsPass = process.env.VGS_PASSWORD;
@@ -13,7 +13,7 @@ async function getSubmitById(submitId) {
   const url = `http://api.netlify.com/api/v1/submissions?access_token=${netlifyToken}`;
   const response = await request(url);
   const data = JSON.parse(response);
-    
+
   const submit = data.find(r => r.data.submit_id === submitId);
   console.log('submit', submit.data);
 
@@ -52,12 +52,12 @@ async function charge(cardToken, amount) {
 exports.handler = async function(event, context) {
   const submitId = event.queryStringParameters.submitId;
   console.log('submitId', submitId);
-  
+
   const userData = await getSubmitById(submitId);
 
   const payload = `card[number]=${userData.card}&card[exp_month]=${userData.month}&card[exp_year]=${userData.year}&card[cvc]=${userData.cvv}`
   console.log('payload', payload);
-  
+
   try {
     let response = await sendDataWithProxy(
       'https://api.stripe.com/v1/tokens', fwUrl, payload, 'application/x-www-form-urlencoded'
@@ -66,9 +66,9 @@ exports.handler = async function(event, context) {
     console.log('token', token);
 
     const chargeResponse = await charge(token, 100);
-    
+
     console.log('chargeResponse', chargeResponse);
-    
+
     return {
       statusCode: 200,
       body: JSON.stringify({
@@ -83,8 +83,8 @@ exports.handler = async function(event, context) {
     } else {
       console.log(e);
     }
-    
-    
+
+
     return {
       statusCode: 200,
       body: 'error',

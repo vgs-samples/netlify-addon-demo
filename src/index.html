@@ -12,8 +12,8 @@
 <body>
   <div class="row payloads-row">
     <div class="col">
-        <img class="checkr-payload" width="40" src="./vgs-logo.png" 
-        data-container="body" data-toggle="popover" data-placement="bottom"       />
+        <img class="checkr-payload" width="40" src="./vgs-logo.png"
+        data-container="body" data-toggle="popover" data-placement="bottom" />
     </div>
     <div class="col">
       <img class="stripe-payload" width="40" src="./vgs-logo.png" />
@@ -41,7 +41,7 @@
       <div class="md-step-bar-right"></div>
     </div>
   </div>
-      
+
   <div class="container mb-5">
     <form class="step1" name="vgs" method="post" netlify-honeypot="b" autocomplete="off" netlify secure style="width: 430px;margin: 0 auto;">
       <input type="hidden" name="submit_id" />
@@ -56,7 +56,7 @@
           <input type="text" class="form-control" name="last_name" id="last_name" value="Doe" />
         </div>
       </div>
-  
+
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="email_address">Email</label>
@@ -67,7 +67,7 @@
           <input type="text" class="form-control" name="ssn" id="ssn" data-secure-field />
         </div>
       </div>
-      
+
       <div class="form-row">
         <div class="form-group col-md-4">
             <label for="birthdate">Date of Birth</label>
@@ -137,7 +137,7 @@
     document.querySelector('[name=submit_id]').value = submitId;
     // function onFormSubmit(e) {
     //   console.log(e);
-      
+
     //   e.preventDefault();
     //   e.stopPropagation();
 
@@ -145,12 +145,12 @@
     //   checkrDemoSubmit(submitId);
     // }
     const initForm = () => {
-      
+
       vgs.onSubmitForm = function(secureForm, form) {
         var formData = new FormData();
         formData.set('form-name', form.getAttribute('name'));
         const payload = vgs.getPayload(form);
-      
+
         secureForm.submit('/', {
           serialization: 'formData',
           headers: {
@@ -265,7 +265,7 @@
     function completeStep(step) {
       $(`.step-header-${step}`).addClass('active')
     }
-    
+
   </script>
 </body>
 </html>
