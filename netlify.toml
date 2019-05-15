@@ -1,4 +1,4 @@
 [build]
-	build = "echo 'hi'"
+	command = "echo 'hi'"
   functions = "functions"
   publish = "src"
