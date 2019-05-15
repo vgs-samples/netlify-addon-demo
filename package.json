@@ -1,11 +1,7 @@
 {
-  "name": "fn",
+  "name": "netlify-addon-demo",
   "version": "1.0.0",
   "description": "",
-  "main": "stripe.js",
-  "scripts": {
-    "start-fn": "netlify-lambda serve fn"
-  },
   "author": "",
   "license": "ISC",
   "dependencies": {
