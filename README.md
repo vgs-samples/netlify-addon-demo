@@ -2,6 +2,9 @@
 
 Netlify addon demo is a demo integration of [Netlify forms](https://www.netlify.com/docs/form-handling/) with [Very Good Security](https://www.verygoodsecurity.com/). The addon allows to collect users data via forms and securely transfer them to 3rd parties as Checkr and Stripe.
 
+Addon docs https://www.verygoodsecurity.com/integrations/netlify
+
+
 ## How to use it 
 
 - Add `secure` attribute to the `<form>` tag
