@@ -7,7 +7,7 @@ Addon docs https://www.verygoodsecurity.com/docs/integrations/netlify
 
 ## How to use it 
 
-- Add `secure` attribute to the `<form>` tag
+- Add `data-secure` attribute to the `<form>` tag
 - Add `data-secure-field` attribute to the `<input>` tag with sensitive data
 
 Use test data to fill form:
