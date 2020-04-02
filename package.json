@@ -6,6 +6,6 @@
   "license": "ISC",
   "dependencies": {
     "request-promise-native": "^1.0.7",
-    "stripe": "^6.28.0"
+    "stripe": "^6.36.0"
   }
 }
