@@ -6,6 +6,12 @@
   "license": "ISC",
   "dependencies": {
     "request-promise-native": "^1.0.7",
-    "stripe": "^6.28.0"
-  }
+    "stripe": "^6.28.0",
+    "snyk": "^1.316.1"
+  },
+  "scripts": {
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
+  },
+  "snyk": true
 }
