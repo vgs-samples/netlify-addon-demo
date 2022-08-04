@@ -5,7 +5,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "request-promise-native": "^1.0.7",
+    "request-promise-native": "^1.0.9",
     "stripe": "^6.28.0"
   }
 }
